@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NGANGO Boheur Audrick · portfolio</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    /* ===== LIGHT THEME ===== */
+    body.light-theme {
+      background: #f8fafc;
+      color: #1e293b;
+    }
+
+    body.light-theme .background {
+      background: #f1f5f9;
+    }
+
+    body.light-theme .gradient-sphere {
+      background: radial-gradient(circle at 30% 30%, rgba(0, 180, 255, 0.1), rgba(120, 40, 255, 0.05) 70%);
+    }
+
+    body.light-theme .gradient-sphere-2 {
+      background: radial-gradient(circle at 70% 70%, rgba(255, 100, 150, 0.08), rgba(255, 200, 50, 0.03) 70%);
+    }
+
+    body.light-theme .stat-card,
+    body.light-theme .about-card,
+    body.light-theme .project-card,
+    body.light-theme .contact-section,
+    body.light-theme .form-card,
+    body.light-theme .gallery-card {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(0, 0, 0, 0.05);
+    }
+
+    body.light-theme .stat-label,
+    body.light-theme .project-desc,
+    body.light-theme .contact-left p,
+    body.light-theme .section-subtitle,
+    body.light-theme .form-label,
+    body.light-theme .gallery-item p {
+      color: #475569;
+    }
+
+    body.light-theme .skill-item {
+      background: white;
+      color: #1e293b;
+      border-color: #e2e8f0;
+    }
+
+    body.light-theme .btn-outline {
+      border-color: #cbd5e1;
+      color: #1e293b;
+    }
+
+    body.light-theme .header-item,
+    body.light-theme .footer-links a {
+      color: #475569;
+    }
+
+    body.light-theme .name {
+      background: linear-gradient(135deg, #0f172a, #334155);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    /* ===== DARK THEME ===== */
+    body.dark-theme {
+      background: #0a0c10;
+      color: #eaeef2;
+    }
+
+    body.dark-theme .background {
+      background: #0a0c10;
+    }
+
+    body.dark-theme .gradient-sphere {
+      background: radial-gradient(circle at 30% 30%, rgba(0, 180, 255, 0.15), rgba(120, 40, 255, 0.1) 70%);
+    }
+
+    body.dark-theme .gradient-sphere-2 {
+      background: radial-gradient(circle at 70% 70%, rgba(255, 100, 150, 0.1), rgba(255, 200, 50, 0.05) 70%);
+    }
+
+    body.dark-theme .stat-card,
+    body.dark-theme .about-card,
+    body.dark-theme .project-card,
+    body.dark-theme .contact-section,
+    body.dark-theme .form-card,
+    body.dark-theme .gallery-card {
+      background: rgba(20, 30, 45, 0.4);
+      border-color: rgba(255, 255, 255, 0.03);
+    }
+
+    /* ===== BACKGROUND ===== */
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      transition: background 0.3s;
+    }
+
+    .gradient-sphere {
+      position: absolute;
+      width: 80vmax;
+      height: 80vmax;
+      border-radius: 50%;
+      top: -20vmax;
+      right: -10vmax;
+      filter: blur(80px);
+      animation: sphereMove 20s infinite alternate ease-in-out;
+    }
+
+    .gradient-sphere-2 {
+      position: absolute;
+      width: 80vmax;
+      height: 80vmax;
+      border-radius: 50%;
+      bottom: -20vmax;
+      left: -10vmax;
+      filter: blur(80px);
+      animation: sphereMove2 25s infinite alternate ease-in-out;
+    }
+
+    @keyframes sphereMove {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(-10%, -10%) scale(1.1); }
+    }
+
+    @keyframes sphereMove2 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(10%, 10%) scale(1.2); }
+    }
+
+    .noise {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc0IiBudW1PY3RhdmVzPSIzIiAvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNmKSIgb3BhY2l0eT0iMC4wMjUiIC8+PC9zdmc+');
+      opacity: 0.4;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2rem 2rem 3rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: sticky;
+      top: 1rem;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 100px;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.5rem 0;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #3b82f6;
+      transition: width 0.2s;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: #3b82f6;
+    }
+
+    .nav-controls {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: inherit;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .nav-btn:hover {
+      background: #3b82f6;
+      color: white;
+      border-color: #3b82f6;
+    }
+
+    .lang-select {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      color: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .lang-select option {
+      background: #1e293b;
+      color: white;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 0 4rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff, #a0b3cc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+
+    .logo span {
+      color: #3b82f6;
+    }
+
+    .header-contact {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .header-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .header-item i {
+      color: #3b82f6;
+      width: 1.5rem;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 0 6rem;
+      gap: 3rem;
+    }
+
+    .hero-profile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .profile-image-wrapper {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 6px solid #3b82f6;
+      box-shadow: 0 30px 40px -15px rgba(59, 130, 246, 0.6), 0 0 0 4px rgba(255, 255, 255, 0.2);
+      transition: all 0.4s ease;
+      animation: profile-glow 3s infinite alternate;
+    }
+
+    @keyframes profile-glow {
+      0% { box-shadow: 0 30px 40px -15px rgba(59, 130, 246, 0.6), 0 0 0 4px rgba(255, 255, 255, 0.2); }
+      100% { box-shadow: 0 40px 60px -15px rgba(59, 130, 246, 0.9), 0 0 0 6px rgba(255, 255, 255, 0.3); }
+    }
+
+    .profile-image-wrapper:hover {
+      transform: scale(1.05) rotate(2deg);
+      border-color: #2563eb;
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .greeting {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #3b82f6;
+      margin-bottom: 1rem;
+    }
+
+    .name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #fff, #cbd5e1);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .title {
+      font-size: 1.4rem;
+      margin-bottom: 2.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #94a3b8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid transparent;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: #3b82f6;
+      color: white;
+      box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: #2563eb;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 20px 30px -5px rgba(59, 130, 246, 0.6);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: currentColor;
+      color: inherit;
+    }
+
+    .btn-outline:hover {
+      border-color: #3b82f6;
+      color: #3b82f6;
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 700px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+    }
+
+    .stat-card {
+      backdrop-filter: blur(10px);
+      border: 1px solid;
+      border-radius: 24px;
+      padding: 2rem 1.5rem;
+      transition: transform 0.3s, border-color 0.3s;
+      text-align: center;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-8px);
+      border-color: #3b82f6;
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #3b82f6;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ===== CODE-BASED GALLERY SECTION ===== */
+    .gallery-card {
+      backdrop-filter: blur(10px);
+      border: 1px solid;
+      border-radius: 32px;
+      padding: 2.5rem;
+      margin: 2rem 0 4rem;
+    }
+
+    .gallery-note {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .gallery-note i {
+      font-size: 2rem;
+      color: #3b82f6;
+    }
+
+    .gallery-note p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .gallery-note code {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 0.2rem 0.4rem;
+      border-radius: 6px;
+      font-family: monospace;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      border: 2px solid transparent;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03) rotate(1deg);
+      border-color: #3b82f6;
+      box-shadow: 0 20px 30px -10px rgba(59, 130, 246, 0.5);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-item-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      padding: 1rem;
+      color: white;
+      font-size: 0.9rem;
+      transform: translateY(100%);
+      transition: transform 0.3s;
+    }
+
+    .gallery-item:hover .gallery-item-caption {
+      transform: translateY(0);
+    }
+
+    .code-block {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 2rem 0 0;
+      overflow-x: auto;
+    }
+
+    .code-block pre {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 0.9rem;
+      color: #a5d6ff;
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      scroll-margin-top: 100px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 4rem 0 2.5rem;
+    }
+
+    .section-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(59, 130, 246, 0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #3b82f6;
+      font-size: 1.5rem;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .about-card {
+      backdrop-filter: blur(10px);
+      border: 1px solid;
+      border-radius: 32px;
+      padding: 2.5rem;
+      transition: border-color 0.3s;
+    }
+
+    .about-card:hover {
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+
+    .highlight {
+      color: #3b82f6;
+      font-weight: 500;
+    }
+
+    .contact-compact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .compact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .compact-item i {
+      width: 40px;
+      height: 40px;
+      background: rgba(59, 130, 246, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #3b82f6;
+    }
+
+    /* ===== SKILLS ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-item {
+      border: 1px solid;
+      border-radius: 100px;
+      padding: 0.8rem 1.5rem;
+      text-align: center;
+      font-weight: 500;
+      transition: all 0.3s;
+      backdrop-filter: blur(5px);
+    }
+
+    .skill-item:hover {
+      background: #3b82f6;
+      color: white;
+      border-color: #3b82f6;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+    }
+
+    /* ===== PROJECTS ===== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      backdrop-filter: blur(10px);
+      border: 1px solid;
+      border-radius: 28px;
+      padding: 2rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
+      background: #3b82f6;
+      transition: height 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+
+    .project-card:hover::before {
+      height: 100%;
+    }
+
+    .project-icon {
+      font-size: 2.2rem;
+      color: #3b82f6;
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      margin: 1.5rem 0 1rem;
+    }
+
+    .project-link {
+      color: #3b82f6;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .project-link:hover {
+      color: #2563eb;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tag {
+      background: rgba(59, 130, 246, 0.1);
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .form-card {
+      backdrop-filter: blur(10px);
+      border: 1px solid;
+      border-radius: 32px;
+      padding: 2.5rem;
+      margin: 4rem 0;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 700px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid;
+      border-radius: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      transition: all 0.2s;
+      background: transparent;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .form-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-full {
+      grid-column: 1 / -1;
+    }
+
+    .submit-btn {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      background: #2563eb;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 25px -5px rgba(59, 130, 246, 0.5);
+    }
+
+    .success-message {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 16px;
+      padding: 1rem;
+      margin-top: 1rem;
+      color: #22c55e;
+      display: none;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    /* ===== CONTACT INFO SECTION ===== */
+    .contact-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 4rem 0;
+      backdrop-filter: blur(10px);
+      border: 1px solid;
+      border-radius: 32px;
+      padding: 2.5rem;
+    }
+
+    @media (max-width: 700px) {
+      .contact-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-left h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-row i {
+      width: 48px;
+      height: 48px;
+      background: rgba(59, 130, 246, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #3b82f6;
+      font-size: 1.2rem;
+    }
+
+    .phone-group {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .availability {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 100px;
+      padding: 1rem 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .availability-dot {
+      width: 12px;
+      height: 12px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #3b82f6;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .stat-card, .project-card, .gallery-item {
+      animation: fadeInUp 0.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    .stat-card:nth-child(1) { animation-delay: 0.1s; }
+    .stat-card:nth-child(2) { animation-delay: 0.2s; }
+    .stat-card:nth-child(3) { animation-delay: 0.3s; }
+    .stat-card:nth-child(4) { animation-delay: 0.4s; }
+  </style>
+</head>
+<body class="dark-theme">
+  <div class="background">
+    <div class="gradient-sphere"></div>
+    <div class="gradient-sphere-2"></div>
+    <div class="noise"></div>
+  </div>
+
+  <div class="container">
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-controls">
+        <button class="nav-btn" id="themeToggle">
+          <i class="fas fa-moon"></i>
+          <span>Theme</span>
+        </button>
+        <select class="lang-select" id="langSelect">
+          <option value="en">🇬🇧 EN</option>
+          <option value="fr">🇫🇷 FR</option>
+          <option value="rw">🇷🇼 RW</option>
+        </select>
+      </div>
+    </nav>
+
+    <!-- HOME SECTION -->
+    <section id="home">
+      <header>
+        <div class="logo">NGANGO <span>Boheur</span> Audrick</div>
+        <div class="header-contact">
+          <div class="header-item">
+            <i class="fas fa-envelope"></i>
+            <span>ngangoaudro304@gmail.com</span>
+          </div>
+          <div class="header-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>0781115554 / 0784007648</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="hero">
+        <div class="hero-profile">
+          <div class="profile-image-wrapper">
+            <img src="./foto/nba.jpg" alt="NGANGO Boheur Audrick" class="profile-image" onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'profile-image-placeholder\'><i class=\'fas fa-user\'></i></div>'">
+          </div>
+        </div>
+
+        <div class="greeting">👋 WELCOME TO MY PORTFOLIO</div>
+        <h1 class="name" data-i18n="name">NGANGO Boheur Audrick</h1>
+        <div class="title" data-i18n="title">Creative problem solver & full-stack developer crafting digital experiences with precision and heart.</div>
+        
+        <div class="hero-buttons">
+          <a href="#contact-form" class="btn btn-primary"><i class="fas fa-paper-plane"></i> <span data-i18n="contactMe">Contact me</span></a>
+          <a href="#" class="btn btn-outline"><i class="fas fa-file-alt"></i> <span data-i18n="resume">View resume</span></a>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">5+</div>
+            <div class="stat-label" data-i18n="yearsExp">Years experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">20+</div>
+            <div class="stat-label" data-i18n="projects">Projects completed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">12</div>
+            <div class="stat-label" data-i18n="technologies">Technologies</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">∞</div>
+            <div class="stat-label" data-i18n="energy">Creative energy</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CODE-BASED GALLERY SECTION - Edit HTML directly to add images -->
+    <section id="gallery">
+      <div class="section-header">
+        <div class="section-icon"><i class="fas fa-images"></i></div>
+        <div>
+          <h2 class="section-title" data-i18n="galleryTitle">My Gallery</h2>
+          <div class="section-subtitle" data-i18n="gallerySub">Showcasing my work and moments</div>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-note">
+          <i class="fas fa-code"></i>
+          <p><strong data-i18n="galleryNote">To add or remove images, edit the HTML code directly:</strong> <br>
+          <span data-i18n="galleryInstructions">Look for the section with class "gallery-grid" inside the gallery-card. Each "gallery-item" div represents one image. You can add new ones by copying and pasting the div and changing the image filename.</span></p>
+        </div>
+
+        <!-- ===== GALLERY GRID - EDIT HERE TO ADD YOUR IMAGES ===== -->
+        <!-- Instructions: Replace "image1.jpg", "image2.jpg", etc. with your actual image filenames -->
+        <!-- Add more gallery-item divs by copying the pattern below -->
+        <div class="gallery-grid">
+          <!-- Gallery Item 1 -->
+          <div class="gallery-item">
+            <img src="./foto/1.jpg" alt="Gallery Image 1" onerror="this.src='https://via.placeholder.com/400x400?text=Image+1'">
+            <div class="gallery-item-caption">Project showcase 2024</div>
+          </div>
+
+          <!-- Gallery Item 2 -->
+          <div class="gallery-item">
+            <img src="./foto/2.jpg" alt="Gallery Image 2" onerror="this.src='https://via.placeholder.com/400x400?text=Image+2'">
+            <div class="gallery-item-caption">Team collaboration</div>
+          </div>
+
+          <!-- Gallery Item 3 -->
+          <div class="gallery-item">
+            <img src="./foto/3.jpg" alt="Gallery Image 3" onerror="this.src='https://via.placeholder.com/400x400?text=Image+3'">
+            <div class="gallery-item-caption">Coding session</div>
+          </div>
+
+          <!-- Gallery Item 4 -->
+          <div class="gallery-item">
+            <img src="./foto/4.jpg" alt="Gallery Image 4" onerror="this.src='https://via.placeholder.com/400x400?text=Image+4'">
+            <div class="gallery-item-caption">Event speaking</div>
+          </div>
+
+          <!-- Gallery Item 5 -->
+          <div class="gallery-item">
+            <img src="./foto/5.jpg" alt="Gallery Image 5" onerror="this.src='https://via.placeholder.com/400x400?text=Image+5'">
+            <div class="gallery-item-caption">Workshop 2024</div>
+          </div>
+
+          <!-- Gallery Item 6 -->
+          <div class="gallery-item">
+            <img src="./foto/6.jpg" alt="Gallery Image 6" onerror="this.src='https://via.placeholder.com/400x400?text=Image+6'">
+            <div class="gallery-item-caption">Award ceremony</div>
+          </div>
+          <!-- ===== END OF GALLERY GRID ===== -->
+        </div>
+
+        <!-- Code example for adding more images -->
+        <div class="code-block">
+          <pre>&lt;!-- Copy this pattern to add more gallery images --&gt;
+&lt;div class="gallery-item"&gt;
+  &lt;img src="your-image.jpg" alt="Description"&gt;
+  &lt;div class="gallery-item-caption"&gt;Your caption here&lt;/div&gt;
+&lt;/div&gt;</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+      <div class="section-header">
+        <div class="section-icon"><i class="fas fa-user"></i></div>
+        <div>
+          <h2 class="section-title" data-i18n="aboutTitle">About me</h2>
+          <div class="section-subtitle" data-i18n="aboutSub">Passionate creator & problem solver</div>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <div class="about-text" data-i18n="aboutText">
+          I'm a developer based in <span class="highlight">Kigali / Goma</span> with a deep passion for building tools that connect people and simplify workflows. I thrive at the intersection of clean code and human experience, always striving to deliver excellence in everything I create.
+        </div>
+        <div class="contact-compact">
+          <div class="compact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <span class="compact-label" data-i18n="email">EMAIL</span>
+              <span class="compact-value">ngangoaudro304@gmail.com</span>
+            </div>
+          </div>
+          <div class="compact-item">
+            <i class="fas fa-phone-alt"></i>
+            <div>
+              <span class="compact-label" data-i18n="phone">PHONE</span>
+              <span class="compact-value">0781115554 • 0784007648</span>
+            </div>
+          </div>
+          <div class="compact-item">
+            <i class="fas fa-map-pin"></i>
+            <div>
+              <span class="compact-label" data-i18n="location">LOCATION</span>
+              <span class="compact-value">Kigali / Goma</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+      <div class="section-header">
+        <div class="section-icon"><i class="fas fa-code"></i></div>
+        <div>
+          <h2 class="section-title" data-i18n="skillsTitle">Skills & technologies</h2>
+          <div class="section-subtitle" data-i18n="skillsSub">My technical toolkit</div>
+        </div>
+      </div>
+
+      <div class="skills-grid">
+        <span class="skill-item">JavaScript/ES6</span>
+        <span class="skill-item">React</span>
+        <span class="skill-item">Node.js</span>
+        <span class="skill-item">Python</span>
+        <span class="skill-item">TypeScript</span>
+        <span class="skill-item">UI design</span>
+        <span class="skill-item">Figma</span>
+        <span class="skill-item">Firebase</span>
+        <span class="skill-item">Tailwind</span>
+        <span class="skill-item">REST APIs</span>
+        <span class="skill-item">MongoDB</span>
+        <span class="skill-item">Framer</span>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+      <div class="section-header">
+        <div class="section-icon"><i class="fas fa-laptop-code"></i></div>
+        <div>
+          <h2 class="section-title" data-i18n="projectsTitle">Selected work</h2>
+          <div class="section-subtitle" data-i18n="projectsSub">Recent projects I'm proud of</div>
+        </div>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+          <h3 class="project-title">Insight dashboard</h3>
+          <p class="project-desc" data-i18n="proj1Desc">Real‑time analytics platform for field agents with live data visualization.</p>
+          <div class="project-links">
+            <a href="https://github.com/ngango/insight-dashboard" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://insight-demo.vercel.app" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">React</span>
+            <span class="project-tag">D3</span>
+            <span class="project-tag">Node.js</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-phone-volume"></i></div>
+          <h3 class="project-title">Dual‑line app</h3>
+          <p class="project-desc" data-i18n="proj2Desc">Unified interface for managing both 0781115554 and 0784007648 seamlessly.</p>
+          <div class="project-links">
+            <a href="https://github.com/ngango/dualline" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://dualline.vercel.app" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">React Native</span>
+            <span class="project-tag">Firebase</span>
+            <span class="project-tag">Twilio</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-cloud-sun"></i></div>
+          <h3 class="project-title">Eco‑collect</h3>
+          <p class="project-desc" data-i18n="proj3Desc">Waste management & routing optimization for urban sustainability.</p>
+          <div class="project-links">
+            <a href="https://github.com/ngango/ecocollect" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://ecocollect.vercel.app" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Flask</span>
+            <span class="project-tag">PostgreSQL</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h3 class="project-title">SmartLearn</h3>
+          <p class="project-desc" data-i18n="proj4Desc">Micro‑learning platform with personalized content delivery.</p>
+          <div class="project-links">
+            <a href="https://github.com/ngango/smartlearn" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://smartlearn.vercel.app" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Live</a>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Next.js</span>
+            <span class="project-tag">MongoDB</span>
+            <span class="project-tag">Tailwind</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM SECTION -->
+    <section id="contact-form">
+      <div class="section-header">
+        <div class="section-icon"><i class="fas fa-paper-plane"></i></div>
+        <div>
+          <h2 class="section-title" data-i18n="formTitle">Send me a message</h2>
+          <div class="section-subtitle" data-i18n="formSub">I'll get back to you within 24 hours</div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <form id="contactForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" data-i18n="formName">Your name</label>
+              <input type="text" class="form-input" id="name" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="formEmail">Your email</label>
+              <input type="email" class="form-input" id="email" required placeholder="john@example.com">
+            </div>
+            <div class="form-group form-full">
+              <label class="form-label" data-i18n="formSubject">Subject</label>
+              <input type="text" class="form-input" id="subject" required placeholder="Project inquiry">
+            </div>
+            <div class="form-group form-full">
+              <label class="form-label" data-i18n="formMessage">Message</label>
+              <textarea class="form-textarea" id="message" required placeholder="Tell me about your project..."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i> <span data-i18n="sendMessage">Send message</span>
+          </button>
+          <div class="success-message" id="successMessage">
+            <i class="fas fa-check-circle"></i> <span data-i18n="successMsg">Message sent successfully! I'll respond within 24 hours.</span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- CONTACT INFO SECTION -->
+    <section id="contact">
+      <div class="contact-section">
+        <div class="contact-left">
+          <h3 data-i18n="workTogether">Let's work together</h3>
+          <p data-i18n="contactDesc">Have a project in mind? I'm always open to discussing new opportunities and collaborations.</p>
+          <div class="contact-details">
+            <div class="contact-row">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <span class="compact-label" data-i18n="email">EMAIL</span>
+                <span class="compact-value">ngangoaudro304@gmail.com</span>
+              </div>
+            </div>
+            <div class="contact-row">
+              <i class="fas fa-phone-alt"></i>
+              <div>
+                <span class="compact-label" data-i18n="phone">PHONE</span>
+                <div class="phone-group">
+                  <div><span>0781115554</span></div>
+                  <div><span>0784007648</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-right">
+          <div class="availability">
+            <span class="availability-dot"></span>
+            <span data-i18n="available">Available for freelance work</span>
+          </div>
+          <div style="background: rgba(59,130,246,0.1); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(59,130,246,0.2);">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="font-size: 3rem; color: #3b82f6;"><i class="fas fa-qrcode"></i></div>
+              <div>
+                <div style="font-weight: 600; margin-bottom: 0.25rem;" data-i18n="scanToSave">Scan to save contact</div>
+                <div style="font-size: 0.9rem; opacity: 0.8;" data-i18n="addToPhone">Add me to your phone</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>© 2025 NGANGO Boheur Audrick. <span data-i18n="rights">All rights reserved.</span></div>
+      <div class="footer-links">
+        <a href="https://github.com/ngango" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/ngango" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/ngango" target="_blank"><i class="fab fa-twitter"></i></a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function() {
+      // ===== ACTIVE NAVBAR HIGHLIGHT =====
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-links a');
+
+      function updateActiveLink() {
+        let current = '';
+        const scrollPos = window.scrollY + 150;
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateActiveLink);
+      window.addEventListener('load', updateActiveLink);
+
+      // ===== THEME TOGGLE =====
+      const themeToggle = document.getElementById('themeToggle');
+      const body = document.body;
+      const themeIcon = themeToggle.querySelector('i');
+
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      body.classList.add(savedTheme + '-theme');
+      updateThemeIcon(savedTheme);
+
+      themeToggle.addEventListener('click', () => {
+        if (body.classList.contains('dark-theme')) {
+          body.classList.remove('dark-theme');
+          body.classList.add('light-theme');
+          localStorage.setItem('theme', 'light');
+          updateThemeIcon('light');
+        } else {
+          body.classList.remove('light-theme');
+          body.classList.add('dark-theme');
+          localStorage.setItem('theme', 'dark');
+          updateThemeIcon('dark');
+        }
+      });
+
+      function updateThemeIcon(theme) {
+        if (theme === 'dark') {
+          themeIcon.className = 'fas fa-sun';
+        } else {
+          themeIcon.className = 'fas fa-moon';
+        }
+      }
+
+      // ===== LANGUAGE SWITCHER =====
+      const langSelect = document.getElementById('langSelect');
+      
+      const translations = {
+        en: {
+          name: 'NGANGO Boheur Audrick',
+          title: 'Creative problem solver & full-stack developer crafting digital experiences with precision and heart.',
+          contactMe: 'Contact me',
+          resume: 'View resume',
+          yearsExp: 'Years experience',
+          projects: 'Projects completed',
+          technologies: 'Technologies',
+          energy: 'Creative energy',
+          galleryTitle: 'My Gallery',
+          gallerySub: 'Showcasing my work and moments',
+          galleryNote: 'To add or remove images, edit the HTML code directly:',
+          galleryInstructions: 'Look for the section with class "gallery-grid" inside the gallery-card. Each "gallery-item" div represents one image. You can add new ones by copying and pasting the div and changing the image filename.',
+          aboutTitle: 'About me',
+          aboutSub: 'Passionate creator & problem solver',
+          aboutText: 'I\'m a developer based in Kigali / Goma with a deep passion for building tools that connect people and simplify workflows. I thrive at the intersection of clean code and human experience, always striving to deliver excellence in everything I create.',
+          skillsTitle: 'Skills & technologies',
+          skillsSub: 'My technical toolkit',
+          projectsTitle: 'Selected work',
+          projectsSub: 'Recent projects I\'m proud of',
+          proj1Desc: 'Real‑time analytics platform for field agents with live data visualization.',
+          proj2Desc: 'Unified interface for managing both 0781115554 and 0784007648 seamlessly.',
+          proj3Desc: 'Waste management & routing optimization for urban sustainability.',
+          proj4Desc: 'Micro‑learning platform with personalized content delivery.',
+          formTitle: 'Send me a message',
+          formSub: 'I\'ll get back to you within 24 hours',
+          formName: 'Your name',
+          formEmail: 'Your email',
+          formSubject: 'Subject',
+          formMessage: 'Message',
+          sendMessage: 'Send message',
+          successMsg: 'Message sent successfully! I\'ll respond within 24 hours.',
+          workTogether: 'Let\'s work together',
+          contactDesc: 'Have a project in mind? I\'m always open to discussing new opportunities and collaborations.',
+          available: 'Available for freelance work',
+          scanToSave: 'Scan to save contact',
+          addToPhone: 'Add me to your phone',
+          rights: 'All rights reserved.',
+          email: 'EMAIL',
+          phone: 'PHONE',
+          location: 'LOCATION'
+        },
+        rw: {
+          name: 'NGANGO Boheur Audrick',
+          title: 'Umuhanga mu gukemura ibibazo & umugenzuzi w\'ibikorwa bya full-stack ukora ibintu bya digitale mu buryo bwuzuye kandi bwuzuye umutima.',
+          contactMe: 'Twandikire',
+          resume: 'Reba wasifu',
+          yearsExp: 'Uburambe',
+          projects: 'Imikorere yuzuye',
+          technologies: 'Ikoranabuhanga',
+          energy: 'Ingufu',
+          galleryTitle: 'Ingoro yanjye',
+          gallerySub: 'Ngaragaza imirimo yanjye',
+          galleryNote: 'Kongera cyangwa gukuraho amafoto, hindura kode ya HTML:',
+          galleryInstructions: 'Shakisha umutwe ufite class "gallery-grid" muri gallery-card. Buri "gallery-item" ni ifoto imwe. Ushobora kongera ukoporora iyo div ugahindura izina rya dosiye.',
+          aboutTitle: 'Ibyanjye',
+          aboutSub: 'Umunyamuhanga ukunda',
+          aboutText: 'Ndi umugenzuzi uba i Kigali / Goma ukunda cyane kubaka ibikoresho bihuza abantu bikanorohereza imirimo.',
+          skillsTitle: 'Ubuhanga',
+          skillsSub: 'Ibikoresho byanjye',
+          projectsTitle: 'Imirimo',
+          projectsSub: 'Imirimo iherutse',
+          proj1Desc: 'Urubuga rw\'isesengura ry\'igihe kizima kubakozi bo mu mirima.',
+          proj2Desc: 'Urubuga rumwe rwo gucunga 0781115554 na 0784007648.',
+          proj3Desc: 'Gucunga imyanda no kuyigabanya mu mijyi.',
+          proj4Desc: 'Urubuga rwo kwiga rwigenga.',
+          formTitle: 'Nyohereza ubutumwa',
+          formSub: 'Nzagusubiza mu masaha 24',
+          formName: 'Izina ryawe',
+          formEmail: 'Imeyili yawe',
+          formSubject: 'Ingingo',
+          formMessage: 'Ubutumwa',
+          sendMessage: 'Ohereza',
+          successMsg: 'Ubutumwa bwoherejwe! Nzagusubiza mu masaha 24.',
+          workTogether: 'Dukorere hamwe',
+          contactDesc: 'Ufite umushinga? Nahora niteguri kuganira.',
+          available: 'Ndaboneka',
+          scanToSave: 'Sikana kugirango ubike',
+          addToPhone: 'Nyongera kuri terefone yawe',
+          rights: 'Uburenganzira bwose bwubahirijwe.',
+          email: 'IMEYILI',
+          phone: 'TEREFONE',
+          location: 'AHO NTUYE'
+        }
+      };
+
+      function setLanguage(lang) {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[lang] && translations[lang][key]) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+              el.placeholder = translations[lang][key];
+            } else {
+              el.textContent = translations[lang][key];
+            }
+          }
+        });
+      }
+
+      const savedLang = localStorage.getItem('lang') || 'en';
+      langSelect.value = savedLang;
+      setLanguage(savedLang);
+
+      langSelect.addEventListener('change', (e) => {
+        const lang = e.target.value;
+        localStorage.setItem('lang', lang);
+        setLanguage(lang);
+      });
+
+      // ===== CONTACT FORM SUBMISSION =====
+      const contactForm = document.getElementById('contactForm');
+      const successMessage = document.getElementById('successMessage');
+
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+
+        const mailtoLink = `mailto:ngangoaudro304@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+          `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+        )}`;
+
+        try {
+          window.location.href = mailtoLink;
+          
+          successMessage.classList.add('show');
+          contactForm.reset();
+
+          setTimeout(() => {
+            successMessage.classList.remove('show');
+          }, 5000);
+        } catch (error) {
+          alert('Failed to send message. Please try again.');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
